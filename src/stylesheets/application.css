@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900');
+@import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i');
+
+/* Layout */
+
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  line-height: 1.15;
+}
+
+body {
+  min-width: 280px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: var(--black);
+  box-sizing: border-box;
+  background: var(--white);
+}
+
+code, kbd, samp, pre {
+  color: var(--black);
+  font-family: Roboto;
+  line-height: 23px;
+  font-weight: 300;
+  font-size: 14px;
+  white-space: normal;
+}
+
+ul {
+  list-style-type: circle;
+  -webkit-padding-start: 1.4em;
+}
+
+ul li {
+  font-weight: 300;
+}
+
+p {
+  line-height: 25px;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}

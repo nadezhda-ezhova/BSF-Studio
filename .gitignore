@@ -30,7 +30,7 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+build/
 
 # Dependency directories
 node_modules/
@@ -59,3 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# WebStorm config
+.idea
+
+# Output directory
+public/assets
+public/files
+public/manifest.json
+
+.DS_Store
