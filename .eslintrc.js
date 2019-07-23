@@ -4,14 +4,6 @@ module.exports = {
     es6: true,
     node: true
   },
-  overrides: [
-    Object.assign(
-      {
-        files: [ '**/*.test.js' ],
-      },
-      require('eslint-plugin-jest').configs.recommended
-    )
-  ],
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
@@ -24,7 +16,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: ['react', 'import', 'jest'],
+  plugins: ['react', 'import'],
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': 'error',

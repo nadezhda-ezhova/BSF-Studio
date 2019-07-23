@@ -1,7 +1,6 @@
 module.exports = function (webpack) {
   return {
     plugins: [
-      require('iconfont-webpack-plugin')({ resolve: webpack.webpack.resolve }),
       require('postcss-partial-import')({ addDependencyTo: webpack }),
       require('postcss-nested')({}),
       require('postcss-custom-media')({
@@ -41,7 +40,7 @@ module.exports = function (webpack) {
           '--greenDark'       : '#459771',
 
           '--beige'           : '#f5efe6',
-          
+
           '--white'           : '#ffffff',
           '--whiteGrey'       : '#fafafa',
           '--whiteDark'       : '#f0f1f5',

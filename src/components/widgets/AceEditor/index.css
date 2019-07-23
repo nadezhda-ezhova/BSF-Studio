@@ -1,0 +1,19 @@
+.wysiwyg-editor__aside .wysiwyg-editor__toolbar select {
+  padding: 3px 8px;
+  border-radius: 2px;
+  height: 30px;
+  border: 1px solid #999;
+}
+
+.ace-editor__wrapper {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+}
+.ace-editor__wrapper.is-focused {
+  border-color: #85B7D9;
+  z-index: 99;
+}
+
+.ace-editor__toolbar {
+  padding: 10px;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
