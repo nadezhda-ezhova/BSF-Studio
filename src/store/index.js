@@ -1,16 +1,38 @@
-/* globals __CLIENT__ */
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+/* global __CLIENT__ __DEVELOPMENT__ __DEVTOOLS__ */
+
+import { createStore, applyMiddleware } from 'redux';
+
+import APIMiddleware from 'middleware/API';
 
 import reducers from 'reducers';
 
-import ContentfulMiddleware from 'middleware/Contentful'; 
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-export default function (INITIAL_STATE = {}) {
-  const composeEnhancers = __CLIENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let create;
 
-  return createStore(
-    combineReducers(reducers),
-    INITIAL_STATE, 
-    composeEnhancers(applyMiddleware(ContentfulMiddleware))
+const clientMiddleWares = [];
+
+const composeEnhancers = composeWithDevTools({
+  // TODO: update it
+});
+
+//!NOTE: здесь создается Store
+if (__DEVELOPMENT__ && __DEVTOOLS__) {
+  create = initialState => (
+    createStore(reducers, initialState, composeEnhancers(
+      applyMiddleware(
+        APIMiddleware,
+        ...clientMiddleWares
+      ),
+    ))
+  );
+} else {
+  create = initialState => (
+    applyMiddleware(
+      APIMiddleware,
+      ...clientMiddleWares
+    )(createStore)(reducers, initialState)
   );
 }
+
+export default create;

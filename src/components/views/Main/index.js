@@ -1,9 +1,9 @@
 import React from 'react';
 
-import HelloWorld from './sections';
+import WizardLayout from 'components/layouts/WizardLayout';
 
 const Main = () => (
-  <HelloWorld />
+  <WizardLayout />
 );
 
 export default Main;
