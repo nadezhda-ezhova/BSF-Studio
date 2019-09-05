@@ -1,10 +1,11 @@
+/* eslint-disable import/max-dependencies */
 import React, { Fragment } from 'react';
 
 import { connect } from 'react-redux';
 
 import AceEditor from 'components/widgets/AceEditor';
 
-import { compile } from 'actions/compile';
+import { run } from 'actions';
 import { flowRight } from 'lodash';
 
 import data from 'samples/data';
@@ -16,7 +17,7 @@ import types from 'samples/types';
 
 const Main = ({ }) => (
   <Fragment>
-    <button onClick={compile}>Compile</button>
+    <button onClick={run}>Run</button>
 
     <h2>Problem-Data.h</h2>
     <AceEditor value={data} />
@@ -41,5 +42,5 @@ const Main = ({ }) => (
 export default connect(
   null,
   (dispatch) => ({
-  compile: flowRight(dispatch, compile),
-}))(Main);
+    compile: flowRight(dispatch, compile),
+  }))(Main);

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import request from 'superagent';
 
 import data from 'samples/data';
@@ -7,26 +8,26 @@ import include from 'samples/include';
 import parameters from 'samples/parameters';
 import types from 'samples/types';
 
-export const compile = () => {
+export const run = () => {
   const p_data = new File([data], 'Problem-Data.h', {
-    type: "text/plain",
+    type: 'text/plain',
   });
 
   const p_forwards = new File([forwards], 'Problem-Forwards.h', {
-    type: "text/plain",
+    type: 'text/plain',
   });
 
   const p_implementation = new File([implementation], 'Problem-Implementation.cpp', {
-    type: "text/plain",
+    type: 'text/plain',
   });
   const p_include = new File([include], 'Problem-Include.h', {
-    type: "text/plain",
+    type: 'text/plain',
   });
   const p_parameters = new File([parameters], 'Problem-Parameters.h', {
-    type: "text/plain",
+    type: 'text/plain',
   });
   const p_types = new File([types], 'Problem-Types.h', {
-    type: "text/plain",
+    type: 'text/plain',
   });
 
   request
