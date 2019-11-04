@@ -40,7 +40,7 @@ function APICall(
 
   r.end(function (error, data) {
     if (error)
-      subject.onError({
+      console.log(error) || subject.onError({
         error,
         response: camelizeKeys((data || {}).body)
       });
@@ -84,7 +84,7 @@ export default (store) => (next) => (action) => {
     root
   );
 
-  const onError = error => (
+  const onError = error => console.log(error) || (
     next(nextAction(action, { signature, error, type: failureType }))
   );
 

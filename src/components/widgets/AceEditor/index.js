@@ -2,7 +2,6 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { bind } from 'lodash/function';
 import { assign } from 'lodash/object';
 
 import './index.css';

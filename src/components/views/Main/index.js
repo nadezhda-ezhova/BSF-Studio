@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import AceEditor from 'components/widgets/AceEditor';
 
-import { run } from 'actions';
+import { compile } from 'actions';
 import { flowRight } from 'lodash';
 
 import data from 'samples/data';
@@ -15,9 +15,9 @@ import include from 'samples/include';
 import parameters from 'samples/parameters';
 import types from 'samples/types';
 
-const Main = ({ }) => (
+const Main = ({ compile }) => (
   <Fragment>
-    <button onClick={run}>Run</button>
+    <button onClick={compile}>Compile</button>
 
     <h2>Problem-Data.h</h2>
     <AceEditor value={data} />
