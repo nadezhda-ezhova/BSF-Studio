@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { compile, run } from 'actions';
-import { flowRight } from 'lodash';
+import { get, flowRight } from 'lodash';
 
 import Constructor from 'components/views/Constructor';
 
@@ -19,6 +19,7 @@ const stateToProps = (state) => {
 
   return {
     output: state.output,
+    values: get(state, 'form.Constructor.values'),
     initialValues: {
       data,
       forwards,
@@ -41,10 +42,10 @@ const mergeProps = (stateProps, actionProps, ownProps) => Object.assign(
   stateProps,
   {
     compile: () => {
-      actionProps.compile();
+      actionProps.compile(stateProps.values);
     },
     run: () => {
-      actionProps.run();
+      actionProps.run(stateProps.values);
     }
   }
 );

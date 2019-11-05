@@ -63,6 +63,18 @@ const Editor = ({ title, name }) => {
 const Editors = () => (
   <form id='Constructor'>
     <Editor
+      title='Problem-bsfCode.cpp'
+      name='bsfCode'
+    />
+    <Editor
+      title='Problem-bsfParameters.h'
+      name='bsfParameters'
+    />
+    <Editor
+      title='Problem-bsfTypes.h'
+      name='bsfTypes'
+    />
+    <Editor
       title='Problem-Data.h'
       name='data'
     />

@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { compile, run } from 'actions';
-import { flowRight } from 'lodash';
+import { get, flowRight } from 'lodash';
 
 import Constructor from 'components/views/Constructor';
 
+import bsfCode from 'samples/sceleton/bsfCode';
+import bsfParameters from 'samples/sceleton/bsfParameters';
+import bsfTypes from 'samples/sceleton/bsfTypes';
 import data from 'samples/sceleton/data';
 import forwards from 'samples/sceleton/forwards';
 import implementation from 'samples/sceleton/implementation';
@@ -19,7 +22,11 @@ const stateToProps = (state) => {
 
   return {
     output: state.output,
+    values: get(state, 'form.Constructor.values'),
     initialValues: {
+      bsfCode,
+      bsfParameters,
+      bsfTypes,
       data,
       forwards,
       implementation,
@@ -41,10 +48,10 @@ const mergeProps = (stateProps, actionProps, ownProps) => Object.assign(
   stateProps,
   {
     compile: () => {
-      actionProps.compile();
+      actionProps.compile(stateProps.values);
     },
     run: () => {
-      actionProps.run();
+      actionProps.run(stateProps.values);
     }
   }
 );

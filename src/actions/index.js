@@ -3,14 +3,7 @@ import { API_CALL } from 'middleware/API';
 
 import * as actionTypes from 'constants/actionTypes';
 
-import data from 'samples/gravitation/data';
-import forwards from 'samples/gravitation/forwards';
-import implementation from 'samples/gravitation/implementation';
-import include from 'samples/gravitation/include';
-import parameters from 'samples/gravitation/parameters';
-import types from 'samples/gravitation/types';
-
-export function compile () {
+export function compile ({ data, forwards, implementation, include, parameters, types }) {
   const p_data = new File([data], 'Problem-Data.h', {
     type: 'text/plain',
   });
@@ -52,7 +45,7 @@ export function compile () {
   };
 }
 
-export function run () {
+export function run ({ data, forwards, implementation, include, parameters, types }) {
   const p_data = new File([data], 'Problem-Data.h', {
     type: 'text/plain',
   });
