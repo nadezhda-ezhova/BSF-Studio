@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import AceEditor from 'components/widgets/AceEditor';
 
-import { compile } from 'actions';
+import { compile, run } from 'actions';
 import { flowRight } from 'lodash';
 
 import data from 'samples/data';
@@ -15,9 +15,11 @@ import include from 'samples/include';
 import parameters from 'samples/parameters';
 import types from 'samples/types';
 
-const Main = ({ compile }) => (
+const Main = ({ compile, run }) => (
   <Fragment>
     <button onClick={compile}>Compile</button>
+
+    <button onClick={run}>Run</button>
 
     <h2>Problem-Data.h</h2>
     <AceEditor value={data} />
@@ -43,4 +45,5 @@ export default connect(
   null,
   (dispatch) => ({
     compile: flowRight(dispatch, compile),
+    run: flowRight(dispatch, run),
   }))(Main);

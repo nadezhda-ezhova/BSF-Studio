@@ -1,6 +1,4 @@
 /* eslint-disable camelcase */
-import request from 'superagent';
-
 import { API_CALL } from 'middleware/API';
 
 import data from 'samples/data';
@@ -15,6 +13,23 @@ export function compile () {
     type: 'text/plain',
   });
 
+  const p_forwards = new File([forwards], 'Problem-Forwards.h', {
+    type: 'text/plain',
+  });
+
+  const p_implementation = new File([implementation], 'Problem-Implementation.cpp', {
+    type: 'text/plain',
+  });
+  const p_include = new File([include], 'Problem-Include.h', {
+    type: 'text/plain',
+  });
+  const p_parameters = new File([parameters], 'Problem-Parameters.h', {
+    type: 'text/plain',
+  });
+  const p_types = new File([types], 'Problem-Types.h', {
+    type: 'text/plain',
+  });
+
   return {
     [API_CALL]: {
       root: 'http://localhost:80',
@@ -25,7 +40,14 @@ export function compile () {
         'COMPILE_SUCCESS',
         'COMPILE_FAILURE'
       ],
-      attachment: { key: 'Problem-Data.h', file: p_data },
+      attachments: [
+        { key: 'src', file: p_data },
+        { key: 'src', file: p_forwards },
+        { key: 'src', file: p_implementation },
+        { key: 'src', file: p_include },
+        { key: 'src', file: p_parameters },
+        { key: 'src', file: p_types },
+      ]
     }
   };
 }
@@ -52,13 +74,24 @@ export function run () {
     type: 'text/plain',
   });
 
-  request
-    .post('http://localhost:80/compile/grav_mr')
-    .attach('src', p_data)
-    .attach('src', p_forwards)
-    .attach('src', p_include)
-    .attach('src', p_parameters)
-    .attach('src', p_types)
-    .attach('src', p_implementation)
-    .end(() => {});
+  return {
+    [API_CALL]: {
+      root: 'http://localhost:80',
+      endpoint: '/run/grav_mr',
+      method: 'POST',
+      types: [
+        'COMPILE_REQUEST',
+        'COMPILE_SUCCESS',
+        'COMPILE_FAILURE'
+      ],
+      attachments: [
+        { key: 'src', file: p_data },
+        { key: 'src', file: p_forwards },
+        { key: 'src', file: p_implementation },
+        { key: 'src', file: p_include },
+        { key: 'src', file: p_parameters },
+        { key: 'src', file: p_types },
+      ]
+    }
+  };
 }

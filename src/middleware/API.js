@@ -11,7 +11,7 @@ function APICall(
   method = 'GET',
   query = false,
   payload = false,
-  attachment = false,
+  attachments = false,
   token = false,
   root
 ) {
@@ -28,9 +28,9 @@ function APICall(
     r = r.set('Authorization', `Bearer ${token}`);
 
   // Attach file
-  if ((method == 'POST' ||  method == 'PUT') && attachment) {
+  if ((method == 'POST' ||  method == 'PUT') && attachments) {
     const formData = new FormData();
-    formData.append(attachment.key, attachment.file);
+    attachments.map(attachment => formData.append(attachment.key, attachment.file));
     r = r.send(formData);
   }
 
@@ -64,7 +64,7 @@ export default (store) => (next) => (action) => {
   //if (initialLoad() && action[API_CALL]) return undefined;
 
   const {
-    endpoint, method, query, payload, attachment, types, root
+    endpoint, method, query, payload, attachments, types, root
   } = action[API_CALL];
 
   const [requestType, successType, failureType] = types;
@@ -79,7 +79,7 @@ export default (store) => (next) => (action) => {
     method,
     query,
     payload,
-    attachment,
+    attachments,
     authToken,
     root
   );
