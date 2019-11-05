@@ -2,12 +2,13 @@
 import React, { Fragment } from 'react';
 
 import AceEditor from 'components/widgets/AceEditor';
+import Field from 'components/elements/ReduxFormField';
 
 import { get } from 'lodash';
 
 import './index.css';
 
-export default class Main extends React.Component {
+export default class Constructor extends React.Component {
   constructor (props) {
     super(props);
 
@@ -45,45 +46,59 @@ export default class Main extends React.Component {
   }
 }
 
-const Editor = ({ title, value }) => (
+const Editor = ({ title, name }) => {
+  const id = `constructor_${name}`;
+  return (
+    <Fragment>
+      <h2>{title}</h2>
+      <Field
+        component={AceEditor}
+        id={id}
+        name={name}
+      />
+    </Fragment>
+  );
+};
+
+const Editors = () => (
+  <form id='Constructor'>
+    <Editor
+      title='Problem-Data.h'
+      name='data'
+    />
+    <Editor
+      title='Problem-Forwards.h'
+      name='forwards'
+    />
+    <Editor
+      title='Problem-Implementation.h'
+      name='implementation'
+    />
+    <Editor
+      title='Problem-Include.h'
+      name='include'
+    />
+    <Editor
+      title='Problem-Parameters.h'
+      name='parameters'
+    />
+    <Editor
+      title='Problem-Types.h'
+      name='types'
+    />
+  </form>
+);
+
+const Outputer = ({ title, value }) => (
   <Fragment>
     <h2>{title}</h2>
     <AceEditor value={value}/>
   </Fragment>
 );
 
-const Editors = () => (
-  <Fragment>
-    <Editor
-      title='Problem-Data.h'
-      value={data}
-    />
-    <Editor
-      title='Problem-Forwards.h'
-      value={forwards}
-    />
-    <Editor
-      title='Problem-Implementation.h'
-      value={implementation}
-    />
-    <Editor
-      title='Problem-Include.h'
-      value={include}
-    />
-    <Editor
-      title='Problem-Parameters.h'
-      value={parameters}
-    />
-    <Editor
-      title='Problem-Types.h'
-      value={types}
-    />
-  </Fragment>
-);
-
 const Outputers = ({ output }) => (
   <Fragment>
-    <Editor
+    <Outputer
       title='Compilation Output'
       value={(() => {
         const
@@ -98,11 +113,9 @@ const Outputers = ({ output }) => (
       }
     />
 
-    <Editor
+    <Outputer
       title='Runner Output'
       value={get(output, 'run.stdout')}
     />
   </Fragment>
 );
-
-

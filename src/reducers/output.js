@@ -1,6 +1,9 @@
-const INITIAL_STATE = {};
-
 import * as actionTypes from 'constants/actionTypes';
+
+const INITIAL_STATE = {
+  compile: {},
+  run: {}
+};
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {

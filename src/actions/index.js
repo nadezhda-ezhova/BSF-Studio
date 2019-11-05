@@ -3,12 +3,12 @@ import { API_CALL } from 'middleware/API';
 
 import * as actionTypes from 'constants/actionTypes';
 
-import data from 'samples/gravitation-mr/data';
-import forwards from 'samples/gravitation-mr/forwards';
-import implementation from 'samples/gravitation-mr/implementation';
-import include from 'samples/gravitation-mr/include';
-import parameters from 'samples/gravitation-mr/parameters';
-import types from 'samples/gravitation-mr/types';
+import data from 'samples/gravitation/data';
+import forwards from 'samples/gravitation/forwards';
+import implementation from 'samples/gravitation/implementation';
+import include from 'samples/gravitation/include';
+import parameters from 'samples/gravitation/parameters';
+import types from 'samples/gravitation/types';
 
 export function compile () {
   const p_data = new File([data], 'Problem-Data.h', {
