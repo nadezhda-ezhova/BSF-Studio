@@ -9,10 +9,10 @@ export default `
   ==============================================================================*/
   #include <math.h>
   #include "Problem-Include.h"
-  #include "Problem-Types.h"			// Problem Types 
-  #include "Problem-Data.h"			// Problem Data 
-  #include "Problem-Parameters.h"		// Problem Parameters 
-  #include "Problem-Forwards.h"		// Function Forwards
+  #include "Problem-Types.h"           // Problem Types 
+  #include "Problem-Data.h"            // Problem Data 
+  #include "Problem-Parameters.h"      // Problem Parameters 
+  #include "Problem-Forwards.h"        // Function Forwards
   using namespace std;
   
   #define MIN(x,y) (x<y?x:y)
@@ -43,7 +43,7 @@ export default `
   };
   
   void PI_bsf_ProcessResults(bool* exit, PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T* data) {
-    static int counter = 0;	// Iteration Counter
+    static int counter = 0;    // Iteration Counter
     counter++;
     if (counter < PP_ITER_COUNT)
       *exit = false;
@@ -144,7 +144,7 @@ export default `
   
   void PI_bsf_IterOutput(PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T data,
     int iterCount, double elapsedTime) {
-  /*	cout << "coordinates:\\t";
+  /*    cout << "coordinates:\\t";
     for (int j = 0; j < PP_SPACE_DIMENSION; j++)
       cout << data.coordinates[j] << "\\t";
     cout << "\\t\\tvelosity:\\t";

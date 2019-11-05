@@ -7,7 +7,7 @@ export default `
   Creation Date: 09.04.2017
   ==============================================================================*/
   #pragma once
-  #include "Problem-Parameters.h"		// Problem Parameters 
+  #include "Problem-Parameters.h"        // Problem Parameters 
   
   //========================== Problem structures ====================================
   static PT_smallPoint_T PD_X;

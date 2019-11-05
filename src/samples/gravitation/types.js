@@ -7,8 +7,8 @@ export default `
   Authors: Nadezhda A. Ezhova, Leonid B. Sokolinsky
   Creation Date: 09.04.2017
   ==============================================================================*/
-  #pragma once						
-  #include "Problem-Parameters.h"		// Problem Parameters 
+  #pragma once                        
+  #include "Problem-Parameters.h"        // Problem Parameters 
   
   //=========================== Problem Types =========================
   struct PT_smallPoint_T {
@@ -23,18 +23,18 @@ export default `
   };
   
   //=========================== BSF Types =========================
-  struct PT_bsf_data_T {				// Data for workers
+  struct PT_bsf_data_T {                // Data for workers
     // Pointers are not allowed
     double coordinates[PP_SPACE_DIMENSION];
     double velosity[PP_SPACE_DIMENSION];
   };
   
-  struct PT_bsf_mapElem_T {			// Element of map list
+  struct PT_bsf_mapElem_T {            // Element of map list
     // Pointers are not allowed
     int materialPointNo;
   };
   
-  struct PT_bsf_reduceElem_T {		// Element of reduce list	
+  struct PT_bsf_reduceElem_T {        // Element of reduce list    
     // Pointers are not allowed
     double acceleration[PP_SPACE_DIMENSION];
 };

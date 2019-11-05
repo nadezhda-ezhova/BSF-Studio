@@ -1,5 +1,5 @@
-import settings from './settings';
+import output from './output';
 
 export default {
-  settings
+  output
 };

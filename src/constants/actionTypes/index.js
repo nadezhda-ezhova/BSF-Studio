@@ -1,3 +1,7 @@
 export const COMPILE_REQUEST = 'COMPILE_REQUEST';
 export const COMPILE_SUCCESS = 'COMPILE_SUCCESS';
 export const COMPILE_FAILURE = 'COMPILE_FAILURE';
+
+export const RUN_REQUEST = 'RUN_REQUEST';
+export const RUN_SUCCESS = 'RUN_SUCCESS';
+export const RUN_FAILURE = 'RUN_FAILURE';

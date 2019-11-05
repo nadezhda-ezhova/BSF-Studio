@@ -1,22 +1,22 @@
 /* eslint-disable camelcase */
 import { API_CALL } from 'middleware/API';
 
-import data from 'samples/data';
-import forwards from 'samples/forwards';
-import implementation from 'samples/implementation';
-import include from 'samples/include';
-import parameters from 'samples/parameters';
-import types from 'samples/types';
+import * as actionTypes from 'constants/actionTypes';
+
+import data from 'samples/gravitation-mr/data';
+import forwards from 'samples/gravitation-mr/forwards';
+import implementation from 'samples/gravitation-mr/implementation';
+import include from 'samples/gravitation-mr/include';
+import parameters from 'samples/gravitation-mr/parameters';
+import types from 'samples/gravitation-mr/types';
 
 export function compile () {
   const p_data = new File([data], 'Problem-Data.h', {
     type: 'text/plain',
   });
-
   const p_forwards = new File([forwards], 'Problem-Forwards.h', {
     type: 'text/plain',
   });
-
   const p_implementation = new File([implementation], 'Problem-Implementation.cpp', {
     type: 'text/plain',
   });
@@ -36,9 +36,9 @@ export function compile () {
       endpoint: '/compile/grav_mr',
       method: 'POST',
       types: [
-        'COMPILE_REQUEST',
-        'COMPILE_SUCCESS',
-        'COMPILE_FAILURE'
+        actionTypes.COMPILE_REQUEST,
+        actionTypes.COMPILE_SUCCESS,
+        actionTypes.COMPILE_FAILURE
       ],
       attachments: [
         { key: 'src', file: p_data },
@@ -56,11 +56,9 @@ export function run () {
   const p_data = new File([data], 'Problem-Data.h', {
     type: 'text/plain',
   });
-
   const p_forwards = new File([forwards], 'Problem-Forwards.h', {
     type: 'text/plain',
   });
-
   const p_implementation = new File([implementation], 'Problem-Implementation.cpp', {
     type: 'text/plain',
   });
@@ -80,9 +78,9 @@ export function run () {
       endpoint: '/run/grav_mr',
       method: 'POST',
       types: [
-        'COMPILE_REQUEST',
-        'COMPILE_SUCCESS',
-        'COMPILE_FAILURE'
+        actionTypes.RUN_REQUEST,
+        actionTypes.RUN_SUCCESS,
+        actionTypes.RUN_FAILURE
       ],
       attachments: [
         { key: 'src', file: p_data },
