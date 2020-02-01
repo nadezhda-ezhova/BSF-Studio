@@ -1,13 +1,12 @@
 export default `
   /*==============================================================================
   Project: Bulk Synchronous Farm (BSF)
-  Theme: Using BSF Skeleton for Solving Gravitational Problem
-  Module: BSF-Include.h ("Includ" Files for Using BSF Skeleton for Solving Gravitational Problem)
-  Authors: Nadezhda A. Ezhova, Leonid B. Sokolinsky
-  Creation Date: 23.05.2017
+  Theme: BSF Skeleton
+  Module: Problem-Include.h (Problem "Include" Files)
+  Author: Nadezhda A. Ezhova
+  Supervisor: Leonid B. Sokolinsky
+  This source code is a part of BSF Skeleton
   ==============================================================================*/
-  #pragma once
-  #include <iostream>
-  #include <assert.h>
   #include <iomanip>
+  #include <iostream>
 `;

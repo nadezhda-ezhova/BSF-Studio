@@ -1,15 +1,20 @@
 export default `
   /*==============================================================================
   Project: Bulk Synchronous Farm (BSF)
-  Theme: Using BSF Skeleton for Solving Gravitational Problem
+  Theme: BSF Skeleton
   Module: Problem-Data.h (Problem Data)
-  Authors: Nadezhda A. Ezhova, Leonid B. Sokolinsky
-  Creation Date: 09.04.2017
+  Prefix: PP
+  Author: Nadezhda A. Ezhova
+  Supervisor: Leonid B. Sokolinsky
+  This source code is a part of BSF Skeleton
   ==============================================================================*/
-  #pragma once
-  #include "Problem-Parameters.h"        // Problem Parameters 
-  
+  #include "Problem-Types.h";              // Problem Parameters 
+  //========================== Problem variables ====================================
+  static double* PD_g;
   //========================== Problem structures ====================================
-  static PT_smallPoint_T PD_X;
-  static PT_bigPoint_T PD_Y[PP_N];
+  static double PD_A[PP_N][PP_N];          // Coefficients of equations
+  static double PD_b[PP_N];                // Vector of right parts
+  static double PD_Alpha[PP_N][PP_N];      // Reduced matrix
+  static double PD_beta[PP_N];             // Reduced vector of right parts
+  static double PD_prevApproximatio[PP_N]; // Previous approximation
 `;

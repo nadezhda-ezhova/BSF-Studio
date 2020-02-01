@@ -9,7 +9,7 @@ export default `
   This source code is a part of BSF Skeleton
   ==============================================================================*/
   #pragma once
-  #include "Problem-Parameters.h"        // Problem Parameters 
+  #include "Problem-Parameters.h"       // Problem Parameters 
   //=========================== Problem Types =========================
-
+  typedef double PT_point_T[PP_N];      // Point in n-Dimensional Space 
 `;

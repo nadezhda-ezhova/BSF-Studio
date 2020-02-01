@@ -1,10 +1,8 @@
 /* eslint-disable import/max-dependencies */
 import React, { Fragment } from 'react';
 
-import AceEditor from 'components/widgets/AceEditor';
-import Field from 'components/elements/ReduxFormField';
-
-import { get } from 'lodash';
+import Editor from 'components/shared/Editor';
+import Outputers from 'components/shared/Outputer';
 
 import './index.css';
 
@@ -25,7 +23,7 @@ export default class Constructor extends React.Component {
 
   render() {
     const { output } = this.state;
-    const { compile, run } = this.props;
+    const { form, compile, run } = this.props;
 
     return (
       <Fragment>
@@ -35,7 +33,7 @@ export default class Constructor extends React.Component {
         </div>
         <div className='main-container'>
           <main>
-            <Editors />
+            <Form form={form} />
           </main>
           <aside>
             <Outputers output={output} />
@@ -46,22 +44,8 @@ export default class Constructor extends React.Component {
   }
 }
 
-const Editor = ({ title, name }) => {
-  const id = `constructor_${name}`;
-  return (
-    <Fragment>
-      <h2>{title}</h2>
-      <Field
-        component={AceEditor}
-        id={id}
-        name={name}
-      />
-    </Fragment>
-  );
-};
-
-const Editors = () => (
-  <form id='Constructor'>
+const Form = ({ form }) => (
+  <form id={form}>
     <Editor
       title='Problem-bsfCode.cpp'
       name='bsfCode'
@@ -83,10 +67,6 @@ const Editors = () => (
       name='forwards'
     />
     <Editor
-      title='Problem-Implementation.h'
-      name='implementation'
-    />
-    <Editor
       title='Problem-Include.h'
       name='include'
     />
@@ -101,33 +81,4 @@ const Editors = () => (
   </form>
 );
 
-const Outputer = ({ title, value }) => (
-  <Fragment>
-    <h2>{title}</h2>
-    <AceEditor value={value}/>
-  </Fragment>
-);
 
-const Outputers = ({ output }) => (
-  <Fragment>
-    <Outputer
-      title='Compilation Output'
-      value={(() => {
-        const
-          compile = get(output, 'compile', {}),
-          success = compile.code === 0 ? 'Compiled successfully!' : '',
-          code    = compile.code   ? `CODE: ${compile.code}\n`     : '',
-          stdout  = compile.stdout ? `STDOUT: ${compile.stdout}\n` : '',
-          stderr  = compile.stderr ? `STDERR: ${compile.stderr}\n` : '';
-
-        return `${success}${code}${stdout}${stderr}`;
-      })()
-      }
-    />
-
-    <Outputer
-      title='Runner Output'
-      value={get(output, 'run.stdout')}
-    />
-  </Fragment>
-);

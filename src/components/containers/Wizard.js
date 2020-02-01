@@ -6,23 +6,27 @@ import { reduxForm } from 'redux-form';
 import { compile, run } from 'actions';
 import { get, flowRight } from 'lodash';
 
-import Constructor from 'components/views/Constructor';
+import Wizard from 'components/views/Wizard';
 
-import data from 'samples/gravitation/data';
-import forwards from 'samples/gravitation/forwards';
-import implementation from 'samples/gravitation/implementation';
-import include from 'samples/gravitation/include';
-import parameters from 'samples/gravitation/parameters';
-import types from 'samples/gravitation/types';
+import bsfCode from 'samples/sceleton/bsfCode';
+import bsfParameters from 'samples/sceleton/bsfParameters';
+import bsfTypes from 'samples/sceleton/bsfTypes';
+import data from 'samples/sceleton/data';
+import forwards from 'samples/sceleton/forwards';
+import include from 'samples/sceleton/include';
+import parameters from 'samples/sceleton/parameters';
+import types from 'samples/sceleton/types';
 
 const stateToProps = (state) => {
   return {
     output: state.output,
-    values: get(state, 'form.Gravitation.values'),
+    values: get(state, 'form.Wizard.values'),
     initialValues: {
+      bsfCode,
+      bsfParameters,
+      bsfTypes,
       data,
       forwards,
-      implementation,
       include,
       parameters,
       types
@@ -54,10 +58,5 @@ export default connect(
   actionsToProps,
   mergeProps
 )(reduxForm({
-  form: 'Gravitation',
-  enableReinitialize: true,
-  destroyOnUnmount: true,
-  keepDirtyOnReinitialize: true,
-  forceUnregisterOnUnmount: true,
-})(Constructor));
-
+  form: 'Wizard'
+})(Wizard));

@@ -8,9 +8,11 @@ import { get, flowRight } from 'lodash';
 
 import Constructor from 'components/views/Constructor';
 
+import bsfCode from 'samples/jacobi/bsfCode';
+import bsfParameters from 'samples/jacobi/bsfParameters';
+import bsfTypes from 'samples/jacobi/bsfTypes';
 import data from 'samples/jacobi/data';
 import forwards from 'samples/jacobi/forwards';
-import implementation from 'samples/jacobi/implementation';
 import include from 'samples/jacobi/include';
 import parameters from 'samples/jacobi/parameters';
 import types from 'samples/jacobi/types';
@@ -19,11 +21,13 @@ const stateToProps = (state) => {
 
   return {
     output: state.output,
-    values: get(state, 'form.Constructor.values'),
+    values: get(state, 'form.Jacobi.values'),
     initialValues: {
+      bsfCode,
+      bsfParameters,
+      bsfTypes,
       data,
       forwards,
-      implementation,
       include,
       parameters,
       types
@@ -55,9 +59,9 @@ export default connect(
   actionsToProps,
   mergeProps
 )(reduxForm({
-  form: 'Constructor',
+  form: 'Jacobi',
   enableReinitialize: true,
-  destroyOnUnmount: false,
+  destroyOnUnmount: true,
   keepDirtyOnReinitialize: true,
-  forceUnregisterOnUnmount: false,
+  forceUnregisterOnUnmount: true,
 })(Constructor));

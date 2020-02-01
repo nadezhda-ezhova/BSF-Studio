@@ -1,27 +1,18 @@
 export default `
   /*==============================================================================
   Project: Bulk Synchronous Farm (BSF)
-  Theme: Using BSF Skeleton for Solving Gravitational Problem
-  Module: Problem-Forwards.h (BSF Function Forwards)
-  Authors: Nadezhda A. Ezhova, Leonid B. Sokolinsky
-  Creation Date: 09.04.2017
+  Theme: BSF Skeleton
+  Module: Problem-bsf-Forwards.h (Problem Function Forwards)
+  Author: Nadezhda A. Ezhova 
+  Supervisor: Leonid B. Sokolinsky
+  This source code is a part of BSF Skeleton
   ==============================================================================*/
-  #pragma once
-  //====================== BSF Forwards ===========================
-  void PI_bsf_AssignListSize(int* listSize);
-  void PI_bsf_AssignMapList(PT_bsf_mapElem_T* mapList, int listSize);
-  void PI_bsf_CopyData(PT_bsf_data_T* dataIn, PT_bsf_data_T* dataOut);
-  void PI_bsf_IterOutput(PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T data,
-    int iterCount, double elapsedTime);
-  bool PI_bsf_Init(PT_bsf_data_T* data, char** message);
-  void PI_bsf_MapF(PT_bsf_mapElem_T* mapElem, PT_bsf_reduceElem_T* reduceElem, PT_bsf_data_T* data, int* success);
-  void PI_bsf_ParametersOutput(int numOfWorkers, PT_bsf_data_T data);
-  void PI_bsf_ProblemOutput(PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T data,
-    int iterCount, double t, double t_L, double t_s_L, double t_S, double t_r_L, double t_W,
-    double t_A_w, double t_A_m, double t_p);
-  void PI_bsf_ProcessResults(bool* exit, PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T* data);
-  void PI_bsf_ProcessResults(bool* exit, PT_bsf_reduceElem_T* reduceResult, int count, PT_bsf_data_T* data);
-  void PI_bsf_ReduceF(PT_bsf_reduceElem_T* x, PT_bsf_reduceElem_T* y, PT_bsf_reduceElem_T* z);
+  #include "Problem-bsfTypes.h"  // Predefined Problem Parameters
+  #include "Problem-Types.h"    // Problem Types
   
-  //====================== Problem Forwards ===========================
+  static double NormSquare(PT_point_T x);  // Calculates the square of the vector norm
+  static bool ExitCondition(PT_bsf_data_T* data, int iterCounter); 
+  
+  //====================== Macros ================================
+  #define PF_MIN(x,y) (x<y?x:y)
 `;

@@ -13,7 +13,6 @@ import bsfParameters from 'samples/sceleton/bsfParameters';
 import bsfTypes from 'samples/sceleton/bsfTypes';
 import data from 'samples/sceleton/data';
 import forwards from 'samples/sceleton/forwards';
-import implementation from 'samples/sceleton/implementation';
 import include from 'samples/sceleton/include';
 import parameters from 'samples/sceleton/parameters';
 import types from 'samples/sceleton/types';
@@ -29,7 +28,6 @@ const stateToProps = (state) => {
       bsfTypes,
       data,
       forwards,
-      implementation,
       include,
       parameters,
       types
@@ -61,9 +59,5 @@ export default connect(
   actionsToProps,
   mergeProps
 )(reduxForm({
-  form: 'Constructor',
-  enableReinitialize: true,
-  destroyOnUnmount: false,
-  keepDirtyOnReinitialize: true,
-  forceUnregisterOnUnmount: false,
+  form: 'Constructor'
 })(Constructor));

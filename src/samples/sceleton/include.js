@@ -9,4 +9,5 @@ export default `
   ==============================================================================*/
   #include <iomanip>
   #include <iostream>
+  #include <mpi.h>  
 `;
