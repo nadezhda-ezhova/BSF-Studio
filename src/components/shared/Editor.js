@@ -7,7 +7,7 @@ const Editor = ({ title, name }) => {
   const id = `constructor_${name}`;
   return (
     <Fragment>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       <Field
         component={AceEditor}
         id={id}
