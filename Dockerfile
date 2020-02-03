@@ -5,12 +5,12 @@ WORKDIR /var/www
 # ENV NPM_CONFIG_LOGLEVEL warn
 
 COPY package.json /var/www/
-RUN npm install
+RUN yarn
 
 # Bundle APP files
 COPY . /var/www
 
-RUN npm run build:server
+RUN yarn run build:server
 
 # Expose the listening port of your app
 # EXPOSE 3001
