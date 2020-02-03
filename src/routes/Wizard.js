@@ -1,10 +1,10 @@
 import Wizard from 'components/containers/Wizard';
 
-import { wizardPath } from 'helpers/routes';
+import { mainPath } from 'helpers/routes';
 
 export default {
   name: 'Wizard',
-  path: wizardPath,
+  path: mainPath,
   component: Wizard,
   exact: true,
   strict: true

@@ -11,6 +11,6 @@ export default [
   Gravitation,
   Jacobi,
   Nslp,
-  Main,
+  //Main,
   Wizard
 ];
