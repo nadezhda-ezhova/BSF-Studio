@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import classnames from 'classnames';
 
@@ -21,6 +21,8 @@ export default class Wizard extends React.Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleCompile = this.handleCompile.bind(this);
+    this.handleRun = this.handleRun.bind(this);
   }
 
   toggle() {
@@ -33,9 +35,19 @@ export default class Wizard extends React.Component {
     });
   }
 
+  handleCompile() {
+    this.props.compile();
+    this.setState({ toggled: false });
+  }
+
+  handleRun() {
+    this.props.run();
+    this.setState({ toggled: false });
+  }
+
   render() {
     const { output, toggled } = this.state;
-    const { form, compile, run } = this.props;
+    const { form } = this.props;
 
     return (
       <Layout>
@@ -46,31 +58,31 @@ export default class Wizard extends React.Component {
 
         <div className='layout'>
           <div id='wrapper' className={classnames({ toggled })}>
-
             <div id='page-content-wrapper'>
-              <div class='container-fluid'>
+              <div className='container-fluid'>
+
                 <div className='toolbar'>
-                  <button className='green' onClick={compile}>Скомпилировать</button>
-                  <button className='green' onClick={run}>Запустить</button>
+                  <ActionButton onClick={this.handleCompile} text='Компилировать' />
+                  <ActionButton className='blue' onClick={this.handleRun} text='Запустить' />
 
                   <Checkbox
                     id='toggle'
                     label={toggled ? 'Показать результаты' : 'Скрыть результаты'}
-                    onClick={this.toggle}
+                    onChange={this.toggle}
                     checked={!toggled}
                   />
                 </div>
 
                 <Form
                   form={form}
-                  compile={compile}
-                  run={run}
+                  compile={this.handleCompile}
+                  run={this.handleRun}
                 />
               </div>
             </div>
-
           </div>
         </div>
+
       </Layout>
     );
   }
@@ -178,15 +190,20 @@ const Form = ({ form, compile, run }) => (
         name='bsfCode[PC_user_Functions]'
       />
     </Fields>
-    <ButtonLine onClick={run} text='Запустить' />
+    <ButtonLine onClick={run} className='blue' text='Запустить' />
   </form>
 );
 
-const ButtonLine = ({ onClick, text = 'Скомпилировать' }) => (
+const ActionButton = ({ className = 'green', onClick, text = 'Компилировать'}) => (
+  <button className={classnames('action-button', className)} onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  }}>{text}</button>
+);
+
+const ButtonLine = ({ className, onClick, text }) => (
   <div className='button-line'>
-    <button className='green' onClick={(e) => {
-      e.preventDefault();
-      onClick();
-    }}>{text}</button>
+    <ActionButton onClick={onClick} className={className} text={text} />
   </div>
 );
