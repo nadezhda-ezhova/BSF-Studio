@@ -1,0 +1,77 @@
+:root {
+  --heading-height: 15em;
+}
+
+.checkbox {
+  display: flex;
+  float: right;
+  position: fixed;
+  right: 20px;
+  top: calc(var(--heading-height) + 1.5vw);
+  background-color: white;
+  z-index: 101;
+  background-color: white;
+}
+
+.checkbox span {
+  cursor: pointer;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 0;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.checkbox-container {
+  display: inline-block;
+  position: relative;
+  padding: 5px 0;
+}
+
+.checkbox-container label {
+  background-color: #aaa;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease-out;
+  width: 45px;
+  height: 25px;
+  z-index: 2;
+}
+
+.checkbox-container label::after {
+  content: ' ';
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1.5px;
+  left: 1px;
+  transform: translateX(0);
+  transition: transform 0.3s linear;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+}
+
+.checkbox-container input {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+}
+
+.checkbox-container input:checked + label + .active-circle {
+  transform: translate(-50%, -50%) scale(15);
+}
+
+.checkbox-container input:checked + label::after {
+  transform: translateX(calc(100% + 0.5px));
+}
+
+.checkbox-container.green .active-circle,
+.checkbox-container.green input:checked + label {
+  background:linear-gradient(to bottom, #89c403 5%, #77a809 100%);
+  background-color:#89c403;
+  border:1px solid #74b807;
+}

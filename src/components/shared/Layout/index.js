@@ -7,9 +7,7 @@ import './index.css';
 const Layout = ({ children }) => (
   <Fragment>
     <Header />
-    <main>
-      {children}
-    </main>
+    {children}
   </Fragment>
 );
 

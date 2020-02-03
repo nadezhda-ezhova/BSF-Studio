@@ -9,6 +9,14 @@
   }
 }
 
+.toolbar {
+  width: calc(100% - 20px);
+}
+
 .toolbar button {
   margin-right: 20px;
+}
+
+.toolbar button:first-child {
+  margin-left: 0;
 }

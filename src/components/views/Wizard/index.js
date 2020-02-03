@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
 
+import classnames from 'classnames';
+
 import Layout from 'components/shared/Layout';
 import Editor from 'components/shared/Editor';
 import Outputers from 'components/shared/Outputer';
 
+import Checkbox from 'components/elements/Checkbox';
 import Fields from 'components/elements/Fields';
 
 import './index.css';
@@ -13,8 +16,15 @@ export default class Wizard extends React.Component {
     super(props);
 
     this.state = {
-      output: props.output
+      output: props.output,
+      toggled: true
     };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({ toggled: !this.state.toggled });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,17 +34,42 @@ export default class Wizard extends React.Component {
   }
 
   render() {
-    const { output } = this.state;
+    const { output, toggled } = this.state;
     const { form, compile, run } = this.props;
 
     return (
       <Layout>
-        <div>
-          <Form
-            form={form}
-            compile={compile}
-            run={run}
-          />
+
+        <div id='sidebar-wrapper' className={classnames({ toggled })} >
+          <Outputers output={output} />
+        </div>
+
+        <div className='layout'>
+          <div id='wrapper' className={classnames({ toggled })}>
+
+            <div id='page-content-wrapper'>
+              <div class='container-fluid'>
+                <div className='toolbar'>
+                  <button className='green' onClick={compile}>Скомпилировать</button>
+                  <button className='green' onClick={run}>Запустить</button>
+
+                  <Checkbox
+                    id='toggle'
+                    label={toggled ? 'Показать результаты' : 'Скрыть результаты'}
+                    onClick={this.toggle}
+                    checked={!toggled}
+                  />
+                </div>
+
+                <Form
+                  form={form}
+                  compile={compile}
+                  run={run}
+                />
+              </div>
+            </div>
+
+          </div>
         </div>
       </Layout>
     );
@@ -43,7 +78,6 @@ export default class Wizard extends React.Component {
 
 const Form = ({ form, compile, run }) => (
   <form id={form}>
-
     <Editor
       title='Определить в Problem-bsfParameters.h константные параметры модели BSF'
       name='bsfParameters'
@@ -144,12 +178,15 @@ const Form = ({ form, compile, run }) => (
         name='bsfCode[PC_user_Functions]'
       />
     </Fields>
-    <ButtonLine onClick={run} text='Выполнить' />
+    <ButtonLine onClick={run} text='Запустить' />
   </form>
 );
 
 const ButtonLine = ({ onClick, text = 'Скомпилировать' }) => (
   <div className='button-line'>
-    <button onClick={onClick}>{text}</button>
+    <button className='green' onClick={(e) => {
+      e.preventDefault();
+      onClick();
+    }}>{text}</button>
   </div>
 );
