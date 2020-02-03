@@ -3,16 +3,19 @@ import { API_CALL } from 'middleware/API';
 
 import * as actionTypes from 'constants/actionTypes';
 
+import bsfTypesSample from 'samples/wizard/bsfTypes';
+import bsfCodeSample from 'samples/wizard/bsfCode';
+
 const generateAttachments = ({
   bsfCode, bsfParameters, bsfTypes, data, forwards, include, parameters, types
 }) => {
-  const p_bsfCode = new File([bsfCode], 'Problem-bsfCode.cpp', {
+  const p_bsfCode = new File([bsfCodeSample(bsfCode)], 'Problem-bsfCode.cpp', {
     type: 'text/plain',
   });
   const p_bsfParameters = new File([bsfParameters], 'Problem-bsfParameters.h', {
     type: 'text/plain',
   });
-  const p_bsfTypes = new File([bsfTypes], 'Problem-bsfTypes.h', {
+  const p_bsfTypes = new File([bsfTypesSample(bsfTypes)], 'Problem-bsfTypes.h', {
     type: 'text/plain',
   });
   const p_data = new File([data], 'Problem-Data.h', {
